@@ -1,11 +1,20 @@
 class Game:
     def __init__(self):
         self.state = []
+        self.occupied = False
         for i in range(9):
             self.state.append(None)
 
     def move(self, field, symbol):
-        self.state[field] = symbol
+        self.occupied = False
+        if self.state[field] is None:
+            self.state[field] = symbol
+        else:
+            self.occupied = True
+
+    @property
+    def get_occ(self):
+        return self.occupied
 
     def win_check(self):
         if self.state[0] == self.state[1] == self.state[2]:
