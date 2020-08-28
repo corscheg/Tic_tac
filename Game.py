@@ -41,4 +41,11 @@ class Game:
         elif (self.state[2] == self.state[4] == self.state[6]) and (self.state[2] is not None):
             return self.state[2]
         else:
-            return False
+            s = 0
+            for i in self.state:
+                if i is not None:
+                    s += 1
+            if s != 9:
+                return False
+            else:
+                return 'Draw'
