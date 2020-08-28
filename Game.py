@@ -24,21 +24,21 @@ class Game:
         return self.player
 
     def win_check(self):
-        if self.state[0] == self.state[1] == self.state[2]:
+        if (self.state[0] == self.state[1] == self.state[2]) and (self.state[0] is not None):
             return self.state[0]
-        elif self.state[3] == self.state[4] == self.state[5]:
+        elif (self.state[3] == self.state[4] == self.state[5]) and (self.state[3] is not None):
             return self.state[3]
-        elif self.state[6] == self.state[7] == self.state[8]:
+        elif (self.state[6] == self.state[7] == self.state[8]) and (self.state[6] is not None):
             return self.state[6]
-        elif self.state[0] == self.state[3] == self.state[6]:
+        elif (self.state[0] == self.state[3] == self.state[6]) and (self.state[0] is not None):
             return self.state[6]
-        elif self.state[1] == self.state[4] == self.state[7]:
+        elif (self.state[1] == self.state[4] == self.state[7]) and (self.state[1] is not None):
             return self.state[1]
-        elif self.state[2] == self.state[5] == self.state[8]:
+        elif (self.state[2] == self.state[5] == self.state[8]) and (self.state[2] is not None):
             return self.state[2]
-        elif self.state[0] == self.state[4] == self.state[8]:
+        elif (self.state[0] == self.state[4] == self.state[8]) and (self.state[0] is not None):
             return self.state[0]
-        elif self.state[2] == self.state[4] == self.state[6]:
+        elif (self.state[2] == self.state[4] == self.state[6]) and (self.state[2] is not None):
             return self.state[2]
         else:
             return False

@@ -14,7 +14,6 @@ def drCym(field, symbol):
 
 
 def turn(ps):
-    print(m.get_occ(ps))
     if not m.get_occ(ps):
         drCym(ps, m.get_player)
     m.move(ps)
