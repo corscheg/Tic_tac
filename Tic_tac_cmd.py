@@ -11,14 +11,9 @@ print('|---|---|---|')
 print('| 1 | 2 | 3 |')
 print('-------------')
 
-player = '0'
 
 while not m.win_check():
-    field = int(input(player + ' turn:'))
-    m.move(field - 1, player)
-    if player == '0':
-        player = 'X'
-    elif player == 'X':
-        player = '0'
+    field = int(input(m.get_player + ' turn:'))
+    m.move(field - 1)
 
 print('%s won!' % m.win_check())

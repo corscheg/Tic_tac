@@ -4,23 +4,20 @@ pygame.init()
 
 
 def drCym(field, symbol):
-    imga = pygame.Surface((100, 100))
-    imga.fill((0, 200, 0))
-    # if symbol == '0':
-    #     img = pygame.image.load('Images/Zero.bmp')
-    # elif symbol == 'X':
-    #     img = pygame.image.load('Images/Zero.bmp')
+    if symbol == '0':
+        pict = pygame.image.load('Images/Zero.bmp')
+    elif symbol == 'X':
+        pict = pygame.image.load('Images/Cross.bmp')
 
-    print(BUTTONS[field])
-    print(imga)
-    back.blit(imga, BUTTONS[field])
+    back.blit(pict, BUTTONS[field])
     pygame.display.update()
 
 
-def turn(plr, ps):
-    m.move(ps, player)
-    if not m.get_occ:
-        drCym(ps, player)
+def turn(ps):
+    print(m.get_occ(ps))
+    if not m.get_occ(ps):
+        drCym(ps, m.get_player)
+    m.move(ps)
 
 
 WIN_WIDTH = 640
@@ -34,12 +31,8 @@ sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 sc.fill(BLACK)
 back = pygame.image.load('Images/Background.bmp')
 sc.blit(back, (WIN_WIDTH // 2 - back.get_width() // 2, WIN_HEIGHT // 2 - back.get_height() // 2))
-img = pygame.Surface((100, 100))
-img.fill((255, 255, 255))
-back.blit(img, (0, 0))
 pygame.display.update()
 
-player = '0'
 m = Game()
 
 while 1:
@@ -53,14 +46,11 @@ while 1:
                 point = pygame.Rect(pos[0] - (WIN_WIDTH // 2 - back.get_width() // 2), pos[1] - (WIN_HEIGHT // 2 - back.get_height() // 2), 1, 1)
                 for i in range(len(BUTTONS)):
                     if BUTTONS[i].contains(point):
-                        turn(player, i)
-
-                if player == '0':
-                    player = 'X'
-                elif player == 'X':
-                    player = '0'
+                        turn(i)
+                        sc.blit(back, (WIN_WIDTH // 2 - back.get_width() // 2, WIN_HEIGHT // 2 - back.get_height() // 2))
 
                 print(m.state)
+                print(m.win_check())
                 pygame.display.update()
 
                 if m.win_check():
